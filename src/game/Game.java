@@ -1,4 +1,5 @@
-
+package game;
+import components.Board;
 public class Game {
 	public static void main(String[] args){
 		
@@ -10,7 +11,7 @@ public class Game {
 		for (int i = 0; i < 8; i++){
 			for (int j = 0; j < 8; j++){
 				String output;
-				switch (gameBoard.boardArray[i][j].content) {
+				switch (Board.boardArray[i][j].content) {
 				case PAWN: output = "♙";
 				break;
 				case KNIGHT: output = "♘";
@@ -27,8 +28,6 @@ public class Game {
 				break;
 				}
 				System.out.print(output + " ");
-				
-				
 			}
 			System.out.println();
 		}
