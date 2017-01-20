@@ -11,7 +11,23 @@ import components.Board;
 import components.Colour.Color;
 import components.Piece;
 
-public class Display extends Board{
+import java.awt.Frame;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+public class Display extends Frame{
+	
+	public Display() {
+		//set up GUI here
+	    setTitle("Chess");
+	    setSize(400, 400);
+	    
+	    //close condition
+	    addWindowListener(new WindowAdapter(){ public void windowClosing(WindowEvent we) { System.exit(0);}});
+		//post set up
+		setVisible(true);
+	}
+	
+	
 	public static void printGameBoard(){
 		for (int i = 0; i < 8; i++){
 			for (int j = 0; j < 8; j++){
@@ -64,7 +80,7 @@ public class Display extends Board{
 	public static void printBoardColor(){
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++){
-				System.out.print(boardArray[i][j].color);
+				System.out.print(Board.boardArray[i][j].color);
 			}
 			System.out.println();
 		}
