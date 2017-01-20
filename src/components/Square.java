@@ -5,7 +5,17 @@ public class Square {
 	
 	public Piece content;
 	public Color color;
-	
+	public Square northwest;
+	public Square north;
+	public Square northeast;
+	public Square west;
+	public Square southwest;
+	public Square south;
+	public Square southeast;
+	public Square east;
+	public int row;
+	public int column;
+		
 	public Square(Piece startContent, Color startColor){
 		this.content = startContent;
 		this.color = startColor;

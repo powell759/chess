@@ -8,5 +8,5 @@ public class Knight extends Piece{
 		super(c);
 		// TODO Auto-generated constructor stub
 	}
-
+	
 }
