@@ -9,6 +9,5 @@ public class Rook extends Piece{
 		super(c);
 		// TODO Auto-generated constructor stub
 	}
-
-
+	
 }

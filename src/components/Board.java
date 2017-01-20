@@ -14,21 +14,45 @@ public class Board {
 		boardArray = new Square[8][8];
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++){
+				Square tile;
 				if (i % 2 == 0) {					// if even number row, alternate black and white
 					if (j % 2 == 0) {
-						boardArray[i][j] = new Square(new Empty(Color.NONE), Color.WHITE);	
+						boardArray[i][j] = tile = new Square(new Empty(Color.NONE), Color.WHITE);	
 					} else {
-						boardArray[i][j] = new Square(new Empty(Color.NONE), Color.BLACK);		
+						boardArray[i][j] = tile = new Square(new Empty(Color.NONE), Color.BLACK);		
 					}
 				} else {							// if odd number row, alternate to white and black order
 					if (j % 2 == 0) {
-						boardArray[i][j] = new Square(new Empty(Color.NONE), Color.BLACK);
+						boardArray[i][j] = tile = new Square(new Empty(Color.NONE), Color.BLACK);
 					} else {
-						boardArray[i][j] = new Square(new Empty(Color.NONE), Color.WHITE);
+						boardArray[i][j] = tile = new Square(new Empty(Color.NONE), Color.WHITE);
 					}
 				}
+				tile.row = i;
+				tile.column = j;
 			}
 		}
+		setSquareCardinality();
+		setupPieces();
+	}
+		
+	public void setSquareCardinality(){				// a potentially smarter, more OOP way of navigating through the board
+		for (int row = 0; row < 8; row++) {
+			for (int column = 0; column < 8; column++){
+				Square current = boardArray[row][column];
+				if (row > 0) current.north = boardArray[row-1][column];
+				if (column > 0) current.west = boardArray[row][column-1];
+				if (row < 7) current.south = boardArray[row+1][column];
+				if (column < 7) current.east = boardArray[row][column+1];
+				if (row > 0 && column < 7) current.northeast = boardArray[row-1][column+1];
+				if (row > 0 && column > 0) current.northwest = boardArray[row-1][column-1];
+				if (row < 7 && column > 0) current.southwest = boardArray[row+1][column-1];
+				if (row < 7 && column < 7) current.southeast = boardArray[row+1][column+1];
+			}
+		}
+	}
+	
+	public void setupPieces(){
 		//All Pawns
 		for (int i = 0; i < 8; i++){
 			boardArray[1][i].content = new Pawn(Color.BLACK);
@@ -50,6 +74,6 @@ public class Board {
 		boardArray[0][3].content = new King(Color.BLACK);
 		boardArray[0][4].content = new Queen(Color.BLACK);
 		boardArray[7][3].content = new King(Color.WHITE);
-		boardArray[7][4].content = new Queen(Color.WHITE);
+		boardArray[7][4].content = new Queen(Color.WHITE);		
 	}
 }

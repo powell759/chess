@@ -5,8 +5,9 @@ import components.Piece;
 
 public class Pawn extends Piece{
 
+	boolean hasMoved;
 	public Pawn(Color c) {
 		super(c);
-		// TODO Auto-generated constructor stub
+		this.hasMoved = false;
 	}
 }
