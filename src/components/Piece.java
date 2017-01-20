@@ -5,8 +5,8 @@ public class Piece {
 	public enum Content {PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING, EMPTY}
 	
 	public Color color;
-	public Piece(){
-	
+	public Piece(Color c){
+		this.color = c;
 	}
 	
 }
