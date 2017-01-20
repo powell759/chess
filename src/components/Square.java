@@ -4,7 +4,7 @@ import components.Colour.Color;
 public class Square {
 	
 	public Piece content;
-	public Color color;
+	public Color tileColor;
 	public Square northwest;
 	public Square north;
 	public Square northeast;
@@ -18,6 +18,6 @@ public class Square {
 		
 	public Square(Piece startContent, Color startColor){
 		this.content = startContent;
-		this.color = startColor;
+		this.tileColor = startColor;
 	}
 }

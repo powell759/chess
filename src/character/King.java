@@ -10,4 +10,10 @@ public class King extends Piece{
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public boolean validMove(int y, int x) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
 }

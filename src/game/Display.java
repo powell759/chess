@@ -64,7 +64,7 @@ public class Display extends Board{
 	public static void printBoardColor(){
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++){
-				System.out.print(boardArray[i][j].color);
+				System.out.print(boardArray[i][j].tileColor);
 			}
 			System.out.println();
 		}
