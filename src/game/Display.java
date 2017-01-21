@@ -8,10 +8,12 @@ import character.Pawn;
 import character.Queen;
 import character.Rook;
 import components.Board;
-import components.Colour.Color;
 import components.Piece;
 
+import java.awt.Color;
+import java.awt.Canvas;
 import java.awt.Frame;
+import java.awt.Graphics;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 public class Display extends Frame{
@@ -21,10 +23,31 @@ public class Display extends Frame{
 	    setTitle("Chess");
 	    setSize(400, 400);
 	    
+	    //adding canvas
+	    add(new BoardCanvas());
+	    
 	    //close condition
 	    addWindowListener(new WindowAdapter(){ public void windowClosing(WindowEvent we) { System.exit(0);}});
 		//post set up
 		setVisible(true);
+	}
+	
+	class BoardCanvas extends Canvas {
+		public BoardCanvas(){
+			setBackground(Color.WHITE);
+			setSize(400,400);
+		}
+		
+		//TODO - make this function scalable.... lowwww priority
+		public void  paint(Graphics g){
+			g.setColor(Color.BLACK);
+			for(int i = 0; i < 4; i++){
+				for(int j = 0; j < 4; j++){
+					g.fillRect(100*i,100*j, 50, 50);
+					g.fillRect(50+100*i, 50+100*j, 50, 50);
+				}
+			}
+		}
 	}
 	
 	
