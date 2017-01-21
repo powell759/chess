@@ -21,7 +21,7 @@ public class Display extends Frame{
 	public Display() {
 		//set up GUI here
 	    setTitle("Chess");
-	    setSize(400, 400);
+	    setResizable(false);
 	    
 	    //adding canvas
 	    add(new BoardCanvas());
@@ -29,11 +29,13 @@ public class Display extends Frame{
 	    //close condition
 	    addWindowListener(new WindowAdapter(){ public void windowClosing(WindowEvent we) { System.exit(0);}});
 		//post set up
+		pack();
+		setSize(400, 400+getInsets().top);
 		setVisible(true);
 	}
 	
 	class BoardCanvas extends Canvas {
-		public BoardCanvas(){
+		public BoardCanvas(){	
 			setBackground(Color.WHITE);
 			setSize(400,400);
 		}
