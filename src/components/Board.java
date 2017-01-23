@@ -1,5 +1,6 @@
 package components;
-import components.Colour.Color;
+
+import java.awt.Color;
 import character.Bishop;
 import character.Empty;
 import character.Knight;
@@ -17,15 +18,15 @@ public class Board {
 				Square tile;
 				if (i % 2 == 0) {					// if even number row, alternate black and white
 					if (j % 2 == 0) {
-						boardArray[i][j] = tile = new Square(new Empty(Color.NONE), Color.WHITE);	
+						boardArray[i][j] = tile = new Square(new Empty(null), Color.WHITE);	
 					} else {
-						boardArray[i][j] = tile = new Square(new Empty(Color.NONE), Color.BLACK);		
+						boardArray[i][j] = tile = new Square(new Empty(null), Color.BLACK);		
 					}
 				} else {							// if odd number row, alternate to white and black order
 					if (j % 2 == 0) {
-						boardArray[i][j] = tile = new Square(new Empty(Color.NONE), Color.BLACK);
+						boardArray[i][j] = tile = new Square(new Empty(null), Color.BLACK);
 					} else {
-						boardArray[i][j] = tile = new Square(new Empty(Color.NONE), Color.WHITE);
+						boardArray[i][j] = tile = new Square(new Empty(null), Color.WHITE);
 					}
 				}
 				tile.row = i;

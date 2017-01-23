@@ -1,6 +1,6 @@
 package components;
 import character.Empty;
-import components.Colour.Color;
+import java.awt.Color;
 
 public abstract class Piece {
 	
@@ -19,11 +19,11 @@ public abstract class Piece {
 		return boo;
 	}
 	public boolean isEmpty(int y, int x){
-		return Board.boardArray[y][x].content.color.equals(Color.NONE);
+		return Board.boardArray[y][x].content.color.equals(null);
 	}
 	public void move(int y, int x){
 		if(this.validMove(y, x)) {
-			this.position.content = new Empty(Color.NONE);
+			this.position.content = new Empty(null);
 			Board.boardArray[y][x].content = this;
 			this.position = Board.boardArray[y][x];
 		}
