@@ -2,7 +2,7 @@ package game;
 import components.Board;
 import character.*;
 import components.Piece;
-import components.Colour;
+import java.awt.Color;
 
 
 import game.Display;
@@ -18,7 +18,7 @@ public class Game {
 		//Keeping this because it will be helpful to have terminal output next to GUI
 		//while we work
 		Display.printBoardColor();
-		Display.printGameBoard();
+		//Display.printGameBoard();
 		
 
 		while(!gameOver){
@@ -36,6 +36,6 @@ public class Game {
 	}
 	
 	private Piece getContent(int rank, int file){
-		return new Piece(Colour.Color.WHITE);
+		return new Piece(Color.WHITE);
 	}
 }

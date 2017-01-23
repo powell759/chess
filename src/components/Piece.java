@@ -1,5 +1,5 @@
 package components;
-import components.Colour.Color;
+import java.awt.Color;
 
 public class Piece {
 	

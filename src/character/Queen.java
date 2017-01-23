@@ -1,6 +1,6 @@
 package character;
 
-import components.Colour.Color;
+import java.awt.Color;
 import components.Piece;
 
 public class Queen extends Piece{
