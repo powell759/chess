@@ -8,6 +8,7 @@ import character.Pawn;
 import character.Queen;
 import character.Rook;
 import components.Board;
+import components.Colors;
 import components.Piece;
 
 import java.awt.Color;
@@ -36,8 +37,14 @@ public class GameView extends Frame{
 	}
 
 	class BoardCanvas extends Canvas {
+		private Color whiteSquare = new Color(229, 212, 165);
+		private Color whitePiece = new Color(198, 179, 125);
+		private Color blackSquare = new Color(132, 82, 51);
+		private Color blackPiece = new Color(68, 34, 13);
+		private Color highlight = new Color(255, 0, 0, 100);
+		
 		public BoardCanvas(){	
-			setBackground(Color.WHITE);
+			setBackground(whiteSquare);
 			setSize(400,400);
 		    //graphical piece selection starts here!!
 			class WindowCloser extends  WindowAdapter {
@@ -65,13 +72,13 @@ public class GameView extends Frame{
 		
 		public void paintSelection(Graphics g){
 			if (controller.hasSelection()){
-				g.setColor(Color.BLUE);
+				g.setColor(highlight);
 				g.fillRect(controller.drawX(), controller.drawY(), 50, 50);
 			}
 		}
 		
 		public void paintBoard(Graphics g){
-			g.setColor(Color.BLACK);
+			g.setColor(blackSquare);
 			for(int i = 0; i < 4; i++){
 				for(int j = 0; j < 4; j++){
 					g.fillRect(100*i,100*j, 50, 50);
@@ -81,52 +88,23 @@ public class GameView extends Frame{
 			
 		}
 		
+		/**
+		 * Paints the pieces to the screen
+		 * Is poorly written but will be replaced with image drawing
+		 * 
+		 * @param g	Graphics Object
+		 */
 		public void paintPieces(Graphics g){
-			g.setColor(Color.RED);
 			for (int i = 0; i < 8; i++){
 				for (int j = 0; j < 8; j++){
 					String output = "";
 					Piece p = Board.boardArray[i][j].content;
-					if (p instanceof Empty){		// for optimization, do the loop which will occur the most
-						output = " ";
-					} else if (p instanceof Pawn){	// and the pieces as well
-						if(p.color.equals(Color.BLACK)){
-							output = "♟";
-						} else {
-							output = "♙";
-						}
-					} else if (p instanceof Rook){
-						if(p.color.equals(Color.BLACK)){
-							output = "♜";
-						} else {
-							output = "♖";
-						}
-					} else if (p instanceof Bishop){
-						if(p.color.equals(Color.BLACK)){
-							output = "♝";
-						} else {
-							output = "♗";
-						}
-					} else if (p instanceof Knight) {
-						if(p.color.equals(Color.BLACK)){
-							output = "♞";
-						} else {
-							output = "♘";
-						}
-					} else if (p instanceof King){
-						if(p.color.equals(Color.BLACK)){
-							output = "♚";
-						} else {
-							output = "♔";
-						}
-					} else if (p instanceof Queen){
-						if(p.color.equals(Color.BLACK)){
-							output = "♛";
-						} else {
-							output = "♕";
-						}
+					if(p.color == Color.WHITE){
+						g.setColor(whitePiece);
+					} else {
+						g.setColor(blackPiece);
 					}
-					//could draw custom image here
+					output = p.rep();
 					g.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 70));
 					g.drawString(output, 50*j, 50+50*i);
 				}

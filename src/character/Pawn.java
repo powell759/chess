@@ -12,6 +12,7 @@ public class Pawn extends Piece{
 	}
 	
 	public boolean validMove(int y, int x){
+		/**
 		boolean boo = false;
 		if(this.position.column == y){				// pawn can only move straight
 			if(this.color.equals(Color.BLACK)){		// BLACK pawn moves down matrix
@@ -32,7 +33,8 @@ public class Pawn extends Piece{
 				}
 			}
 		} 
-		return boo;
+		**/
+		return true; //boo;
 	}
 	
 	public boolean canEat(int y, int x){
@@ -43,5 +45,10 @@ public class Pawn extends Piece{
 			
 		}
 		return boo;
+	}
+
+	@Override
+	public String rep() {
+		return "♟";
 	}
 }

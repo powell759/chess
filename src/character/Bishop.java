@@ -15,8 +15,13 @@ public class Bishop extends Piece{
 	@Override
 	public boolean validMove(int y, int x) {
 		// TODO Auto-generated method stub
-		System.out.println("Selected Bishop");
+		System.out.println("Valid move for Bishop");
 		return true;
+	}
+
+	@Override
+	public String rep() {
+		return "♝";
 	}
 
 }

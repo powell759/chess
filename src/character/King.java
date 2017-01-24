@@ -13,7 +13,12 @@ public class King extends Piece{
 	@Override
 	public boolean validMove(int y, int x) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
+	}
+
+	@Override
+	public String rep() {
+		return "♚";
 	}
 	
 }

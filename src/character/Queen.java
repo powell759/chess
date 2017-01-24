@@ -12,7 +12,12 @@ public class Queen extends Piece{
 
 	public boolean validMove(int y, int x) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
+	}
+
+	@Override
+	public String rep() {
+		return "♛";
 	}
 
 }
