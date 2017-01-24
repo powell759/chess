@@ -56,7 +56,7 @@ public class GameController {
 	 */
 	public void selector(int x, int y){
 		//Diagnostics
-		System.out.println("attempting selection at" + x + "," + y);
+		System.out.println("Selecting " + x + "," + y);
 		//Selecting
 		model.hasSelection = true;
 		model.selectX = x;
@@ -72,15 +72,8 @@ public class GameController {
 	 */
 	public void mover(int x, int y){
 		Square squareFrom = model.gameBoard.boardArray[model.selectX][model.selectY];
-		Square squareTo = model.gameBoard.boardArray[x][y];
-		
-		squareTo.content = squareFrom.content;
-		squareFrom.content = new Empty(null);
-		System.out.println("FromX:" + model.selectX + squareFrom.row);
-		System.out.println("FromY:" + model.selectY + squareFrom.column);
-		System.out.println("ToX:" + x + squareTo.row);
-		System.out.println("ToY:" + y + squareTo.column);
-		System.out.println("Moving from " + squareFrom.row + ", " + squareFrom.column + "to" + x + ", " + y);
+		System.out.println("Moving to " + x + ", " + y);
+		squareFrom.content.move(x,y);
 		model.hasSelection = false;
 		view.updateGraphics();
 	}

@@ -87,7 +87,7 @@ public class GameView extends Frame{
 			for (int i = 0; i < 8; i++){
 				for (int j = 0; j < 8; j++){
 					String output = "";
-					Piece p = gameBoard.boardArray[i][j].content;
+					Piece p = Board.boardArray[i][j].content;
 					if (p instanceof Empty){		// for optimization, do the loop which will occur the most
 						output = " ";
 					} else if (p instanceof Pawn){	// and the pieces as well
@@ -128,11 +128,9 @@ public class GameView extends Frame{
 						}
 					}
 					//could draw custom image here
-					System.out.print(output);
 					g.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 70));
 					g.drawString(output, 50*j, 50+50*i);
 				}
-				System.out.println();
 			}
 		}
 	}

@@ -10,7 +10,6 @@ public abstract class Piece {
 	public Piece(Color c){
 		this.color = c;
 	}
-	
 	public boolean emptyOrOpponent(int y, int x){
 		boolean boo = false;
 		if (this.color.equals(Color.WHITE) && !Board.boardArray[y][x].content.color.equals(Color.WHITE)) {
@@ -33,6 +32,7 @@ public abstract class Piece {
 		}
 		
 	}
-	
-	public abstract boolean validMove(int y, int x);
+	public boolean validMove(int y, int x){
+		return true;
+	}
 }
