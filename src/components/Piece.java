@@ -32,9 +32,12 @@ public abstract class Piece {
 		}
 		
 	}
+	
 	public boolean validMove(int y, int x){
 		return true;
 	}
+	
+	public abstract boolean[][] validMoves(int y, int x);
 	
 	/**
 	 * Returns the string representation of a Piece
