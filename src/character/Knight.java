@@ -18,4 +18,8 @@ public class Knight extends Piece{
 			  (this.position.row-1==y && this.position.column-2==x)||
 			  (this.position.row-1==y && this.position.column+2==x));
 	}
+	@Override
+	public String rep() {
+		return "♞";
+	}
 }

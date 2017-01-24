@@ -40,13 +40,31 @@ public class GameController {
 	 * @param y	the y coordinate of the selection click
 	 */
 	public void processClick(int x, int y){
-		if(!model.hasSelection){
-			selector(x, y);
+		if(model.hasSelection){
+			if(x == model.selectX && y == model.selectY){
+				deselector(x, y);
+			} else {
+				mover(x, y);
+			}
 		}
 		else {
-			mover(x, y);
+			selector(x, y);
 		}
 	}
+	
+	/**
+	 * Handles piece deselection
+	 * 
+	 * @param x	the x coo	 * @param x
+	 * @param yrdinate of the deselection click
+	 * @param y the y coordinate of the deselection click
+	 */
+	public void deselector(int x, int y){
+		model.hasSelection = false;
+		System.out.println("Deselecting " + x + ", " + y);
+		view.updateGraphics();
+	}
+	
 	
 	/**
 	 * Handles piece selection
@@ -55,17 +73,15 @@ public class GameController {
 	 * @param y the y coordinate of the selection click
 	 */
 	public void selector(int x, int y){
-		//Diagnostics
-		System.out.println("Selecting " + x + "," + y);
-		//Selecting
 		model.hasSelection = true;
 		model.selectX = x;
 		model.selectY = y;
+		System.out.println("Selecting " + x + "," + y);
 		view.updateGraphics();
 	}
 	
 	/**
-	 * Handles piece moving (NOT WORKING)
+	 * Moves piece if the move is valid
 	 * 
 	 * @param x	the x coordinate of selection click
 	 * @param y	the y coordinate of selection click
@@ -74,12 +90,20 @@ public class GameController {
 		Square from = Board.boardArray[model.selectY][model.selectX];
 		Square to = Board.boardArray[y][x];
 		
-		to.content = from.content;
-		from.content = new Empty(null);
-		  
-		System.out.println("Moving to " + x + ", " + y);
-		model.hasSelection = false;
-		view.updateGraphics();
+		if (from.content.validMove(y, x)){
+			to.content = from.content;
+			from.content = new Empty(null);
+			System.out.println("Moving to " + x + ", " + y);
+		    model.hasSelection = false;
+		    view.updateGraphics();
+		} else {
+			System.out.println("Invalid move");
+		}
+		
+
+		
+		
+
 	}
 	
 	public Board getBoard(){

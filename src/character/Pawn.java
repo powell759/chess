@@ -44,4 +44,9 @@ public class Pawn extends Piece{
 		}
 		return boo;
 	}
+
+	@Override
+	public String rep() {
+		return "♟";
+	}
 }

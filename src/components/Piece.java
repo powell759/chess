@@ -35,4 +35,11 @@ public abstract class Piece {
 	public boolean validMove(int y, int x){
 		return true;
 	}
+	
+	/**
+	 * Returns the string representation of a Piece
+	 * 
+	 * @return String representation of Piece
+	 */
+	public abstract String rep();
 }
