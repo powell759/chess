@@ -13,11 +13,5 @@ public class Game {
 	public static void main(String[] args){
 		new Game();
 		
-		/**while(!gameOver){
-			System.out.println("Select Rank:");
-			System.out.println("Select File:");
-			//check for piece
-			//select in case of non-empty square
-		}**/
 	}
 }
