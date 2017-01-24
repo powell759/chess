@@ -10,4 +10,9 @@ public class Queen extends Piece{
 		// TODO Auto-generated constructor stub
 	}
 
+	public boolean validMove(int y, int x) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

@@ -1,7 +1,6 @@
 package game;
 
 public class Game {
-	
 	/**
 	 * Main method for Game
 	 * 
