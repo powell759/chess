@@ -13,8 +13,7 @@ public class King extends Piece{
 	@Override
 	public boolean validMove(int y, int x) {
 		// TODO Auto-generated method stub
-		System.out.println("Invalid move for King");
-		return false;
+		return true;
 	}
 
 	@Override

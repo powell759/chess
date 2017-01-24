@@ -8,6 +8,8 @@ public class Knight extends Piece{
 	}
 	public boolean validMove(int y, int x){
 		System.out.println("Knight Check");
+		return true;
+	/**
 		return this.emptyOrOpponent(y, x) && (	// tile needs to be empty or legal eat
 			  (this.position.row+2==y && this.position.column+1==x)||
 			  (this.position.row+2==y && this.position.column-1==x)||
@@ -17,6 +19,7 @@ public class Knight extends Piece{
 			  (this.position.row+1==y && this.position.column+2==x)||
 			  (this.position.row-1==y && this.position.column-2==x)||
 			  (this.position.row-1==y && this.position.column+2==x));
+	**/
 	}
 	@Override
 	public String rep() {
