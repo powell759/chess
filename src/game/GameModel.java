@@ -3,7 +3,7 @@ package game;
 import components.Board;
 
 public class GameModel {
-	private Board gameBoard;
+	public Board gameBoard;
 	public boolean hasSelection;
 	public int selectX;
 	public int selectY;

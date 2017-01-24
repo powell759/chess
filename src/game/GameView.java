@@ -50,7 +50,7 @@ public class GameView extends Frame{
 		    class PieceSelector extends MouseAdapter {
 		    	@Override
 				public void mouseClicked(MouseEvent e){
-					controller.selector(e.getX() / 50, e.getY() / 50);
+					controller.processClick(e.getX() / 50, e.getY() / 50);
 				}
 			}
 			addMouseListener(new PieceSelector());
@@ -89,7 +89,7 @@ public class GameView extends Frame{
 					String output = "";
 					Piece p = gameBoard.boardArray[i][j].content;
 					if (p instanceof Empty){		// for optimization, do the loop which will occur the most
-						output = "";
+						output = " ";
 					} else if (p instanceof Pawn){	// and the pieces as well
 						if(p.color.equals(Color.BLACK)){
 							output = "♟";
@@ -128,9 +128,11 @@ public class GameView extends Frame{
 						}
 					}
 					//could draw custom image here
+					System.out.print(output);
 					g.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 70));
 					g.drawString(output, 50*j, 50+50*i);
 				}
+				System.out.println();
 			}
 		}
 	}
