@@ -71,9 +71,13 @@ public class GameController {
 	 * @param y	the y coordinate of selection click
 	 */
 	public void mover(int x, int y){
-		Square squareFrom = model.gameBoard.boardArray[model.selectX][model.selectY];
+		Square from = Board.boardArray[model.selectY][model.selectX];
+		Square to = Board.boardArray[y][x];
+		
+		to.content = from.content;
+		from.content = new Empty(null);
+		  
 		System.out.println("Moving to " + x + ", " + y);
-		squareFrom.content.move(x,y);
 		model.hasSelection = false;
 		view.updateGraphics();
 	}
