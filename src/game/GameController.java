@@ -64,6 +64,7 @@ public class GameController {
 	public void deselector(int x, int y){
 		model.hasSelection = false;
 		System.out.println("Deselecting " + x + ", " + y);
+		clearMoves();
 		view.updateGraphics();
 	}
 	
@@ -107,17 +108,12 @@ public class GameController {
 			from.content = new Empty(null);
 			System.out.println("Moving to " + x + ", " + y);
 		    model.hasSelection = false;
+		    to.content.hasNotMoved = false;
 		    view.updateGraphics();
 		} else {
 			System.out.println("Invalid move");
 		}
-		
-		//Clearing Moves
-		for(int i = 0; i < 8; i++){
-			for(int j = 0; j < 8; j++){
-				model.moves[i][j] = false;
-			}
-		}
+		clearMoves();
 	}
 	
 	public Board getBoard(){
@@ -138,5 +134,14 @@ public class GameController {
 	
 	public boolean[][] getMoves(){
 		return model.moves;
+	}
+	
+	public void clearMoves(){
+		//Clearing Moves
+		for(int i = 0; i < 8; i++){
+			for(int j = 0; j < 8; j++){
+				model.moves[i][j] = false;
+			}
+		}
 	}
 }

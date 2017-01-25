@@ -17,8 +17,6 @@ public class GameModel {
 		gameBoard = new Board();
 		hasSelection = false;
 		moves = new boolean[8][8];
-		moves[4][4] = true;
-		moves[0][0] = true;
 	}
 	
 	

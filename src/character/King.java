@@ -24,8 +24,38 @@ public class King extends Piece{
 	@Override
 	public void getValidMoves(boolean[][] moveArray, int y, int x) {
 		System.out.println("Getting valid moves for King");
-		// TODO Auto-generated method stub
+		int i;
+		int j;
 		
+		//up
+		j = y - 1;
+		if(j >= 0){
+			moveArray[x][j] = true;
+			//left
+			i = x - 1;
+			if(i >= 0) moveArray[i][j] = true;
+			//right
+			i = x + 1;
+			if(i < 8 ) moveArray[i][j] = true;
+		}
+		
+		//down
+		j = y + 1;
+		if(j < 8){
+			moveArray[x][j] = true;
+			//left
+			i = x - 1;
+			if(i >= 0) moveArray[i][j] = true;
+			//right
+			i = x + 1;
+			if(i < 8 ) moveArray[i][j] = true;
+		}
+		//left
+		i = x - 1;
+		if(i >= 0) moveArray[i][y] = true;
+		//right
+		i = x + 1;
+		if(i < 8) moveArray[i][y] = true;
 	}
 	
 }

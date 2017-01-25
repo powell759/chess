@@ -5,10 +5,8 @@ import components.Piece;
 
 public class Pawn extends Piece{
 
-	public boolean hasNotMoved;
 	public Pawn(Color c) {
 		super(c);
-		this.hasNotMoved = true;
 	}
 
 	@Override
@@ -21,10 +19,10 @@ public class Pawn extends Piece{
 		System.out.println("Getting valid moves for Pawn");
 		//logic here
 		if(this.color == Color.BLACK){
-			moveArray[x][y+1] = true;
+			if(y + 1 <= 7) moveArray[x][y+1] = true;
 			if(hasNotMoved) moveArray[x][y+2] = true;
 		} else {
-			moveArray[x][y-1] = true;
+			if(y - 1 >= 0) moveArray[x][y-1] = true;
 			if(hasNotMoved) moveArray[x][y-2] = true;
 		}		
 	}

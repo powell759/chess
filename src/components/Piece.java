@@ -6,9 +6,11 @@ public abstract class Piece {
 	
 	public Color color;
 	public Square position;
+	public boolean hasNotMoved;
 	
 	public Piece(Color c){
 		this.color = c;
+		hasNotMoved = true;
 	}
 	public boolean emptyOrOpponent(int y, int x){
 		boolean boo = false;
