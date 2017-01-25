@@ -20,5 +20,11 @@ public class Empty extends Piece {
 	public String rep() {
 		return "";
 	}
+	@Override
+	public void getValidMoves(boolean[][] moveArray, int y, int x) {
+		System.out.println("Getting valid moves for Empty");
+		// TODO Auto-generated method stub
+		
+	}
 
 }

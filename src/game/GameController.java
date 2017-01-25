@@ -43,8 +43,10 @@ public class GameController {
 		if(model.hasSelection){
 			if(x == model.selectX && y == model.selectY){
 				deselector(x, y);
-			} else {
+			} else if(model.moves[x][y]){
 				mover(x, y);
+			} else {
+				System.out.println("Not in valid moves");
 			}
 		}
 		else {
@@ -77,9 +79,17 @@ public class GameController {
 		model.selectX = x;
 		model.selectY = y;
 		System.out.println("Selecting " + x + "," + y);
+		setMoves();
 		view.updateGraphics();
 	}
 	
+	/**
+	 * Send moves[][] to selected Piece for move generation
+	 */
+	private void setMoves() {
+		Board.boardArray[model.selectY][model.selectX].content.getValidMoves(model.moves, model.selectY, model.selectX);
+	}
+
 	/**
 	 * Moves piece if the move is valid
 	 * 
@@ -89,6 +99,8 @@ public class GameController {
 	public void mover(int x, int y){
 		Square from = Board.boardArray[model.selectY][model.selectX];
 		Square to = Board.boardArray[y][x];
+		
+		//Clear
 		
 		if (from.content.validMove(y, x)){
 			to.content = from.content;
@@ -100,10 +112,12 @@ public class GameController {
 			System.out.println("Invalid move");
 		}
 		
-
-		
-		
-
+		//Clearing Moves
+		for(int i = 0; i < 8; i++){
+			for(int j = 0; j < 8; j++){
+				model.moves[i][j] = false;
+			}
+		}
 	}
 	
 	public Board getBoard(){
@@ -120,5 +134,9 @@ public class GameController {
 	
 	public int drawY(){
 		return model.selectY * 50;
+	}
+	
+	public boolean[][] getMoves(){
+		return model.moves;
 	}
 }

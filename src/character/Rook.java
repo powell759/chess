@@ -20,5 +20,11 @@ public class Rook extends Piece{
 	public String rep() {
 		return "♜";
 	}
-	
+
+	@Override
+	public void getValidMoves(boolean[][] moveArray, int y, int x) {
+		System.out.println("Getting valid moves for Rook");
+		// TODO Auto-generated method stub
+		
+	}
 }

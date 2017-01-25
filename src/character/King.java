@@ -20,5 +20,12 @@ public class King extends Piece{
 	public String rep() {
 		return "♚";
 	}
+
+	@Override
+	public void getValidMoves(boolean[][] moveArray, int y, int x) {
+		System.out.println("Getting valid moves for King");
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

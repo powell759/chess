@@ -37,7 +37,7 @@ public abstract class Piece {
 		return true;
 	}
 	
-	public abstract boolean[][] validMoves(int y, int x);
+	public abstract void getValidMoves(boolean[][] moveArray, int y, int x);
 	
 	/**
 	 * Returns the string representation of a Piece

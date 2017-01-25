@@ -20,4 +20,11 @@ public class Queen extends Piece{
 		return "♛";
 	}
 
+	@Override
+	public void getValidMoves(boolean[][] moveArray, int y, int x) {
+		System.out.println("Getting valid moves for Queen");
+		// TODO Auto-generated method stub
+		
+	}
+
 }

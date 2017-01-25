@@ -41,7 +41,8 @@ public class GameView extends Frame{
 		private Color whitePiece = new Color(198, 179, 125);
 		private Color blackSquare = new Color(132, 82, 51);
 		private Color blackPiece = new Color(68, 34, 13);
-		private Color highlight = new Color(255, 0, 0, 100);
+		private Color highlight = new Color(0, 0, 255, 100);
+		private Color moves = new Color(255, 255, 0, 100);
 		
 		public BoardCanvas(){	
 			setBackground(whiteSquare);
@@ -66,10 +67,23 @@ public class GameView extends Frame{
 		public void  paint(Graphics g){
 			paintBoard(g);
 			paintSelection(g);
+			paintMoves(g);
 			paintPieces(g);
 			System.out.println("Painting...");
 		}
 		
+		private void paintMoves(Graphics g) {
+			boolean[][] arr = controller.getMoves();
+			g.setColor(moves);
+			for(int i = 0; i < 8; i++){
+				for(int j = 0; j < 8; j++){
+					if(arr[i][j]){
+						g.fillRect(50*i, 50*j, 50, 50);
+					}
+				}
+			}
+		}
+
 		public void paintSelection(Graphics g){
 			if (controller.hasSelection()){
 				g.setColor(highlight);

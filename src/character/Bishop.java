@@ -24,4 +24,11 @@ public class Bishop extends Piece{
 		return "♝";
 	}
 
+	@Override
+	public void getValidMoves(boolean[][] moveArray, int y, int x) {
+		System.out.println("Getting valid moves for Bishop");
+		// TODO Auto-generated method stub
+		
+	}
+
 }
