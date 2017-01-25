@@ -12,33 +12,34 @@ public abstract class Piece {
 		this.color = c;
 		hasNotMoved = true;
 	}
-	public boolean emptyOrOpponent(int y, int x){
+	public boolean emptyOrOpponent(int x, int y){
 		boolean boo = false;
-		if (this.color.equals(Color.WHITE) && !Board.boardArray[y][x].content.color.equals(Color.WHITE)) {
-			boo = true;
-		} else if (this.color.equals(Color.BLACK) && !Board.boardArray[y][x].content.color.equals(Color.BLACK)) {
-			boo = true;
+		if (this.color.equals(Color.WHITE)){
+			if( !Board.boardArray[y][x].content.color.equals(Color.WHITE)) {
+				boo = true;
+			}
+		} else if (this.color.equals(Color.BLACK)){
+			if(!Board.boardArray[y][x].content.color.equals(Color.BLACK)) {
+				boo = true;
+			}
 		}
 		return boo;
 	}
 	
-	public boolean isEmpty(int y, int x){
-		return Board.boardArray[y][x].content.color.equals(null);
-	}
-	
-	public void move(int y, int x){
-		if(this.validMove(y, x)) {
-			this.position.content = new Empty(null);
-			Board.boardArray[y][x].content = this;
-			this.position = Board.boardArray[y][x];
+	public boolean isOpponent(int y, int x){
+		boolean boo = false;
+		if (this.color.equals(Color.BLACK)){
+			if (Board.boardArray[x][y].content.color.equals(Color.WHITE)) boo = true;
+		} else if (this.color.equals(Color.WHITE)){
+			if (Board.boardArray[x][y].content.color.equals(Color.BLACK)) boo = true;
 		}
-		
+		return boo;
 	}
 	
-	public boolean validMove(int y, int x){
-		return true;
+	public static boolean isEmpty(int y, int x){
+		return !(Board.boardArray[y][x].content.color.equals(Color.BLACK) || Board.boardArray[y][x].content.color.equals(Color.WHITE));
 	}
-	
+
 	public abstract void getValidMoves(boolean[][] moveArray, int y, int x);
 	
 	/**

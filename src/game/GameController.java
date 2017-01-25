@@ -1,9 +1,9 @@
 package game;
+
 import components.Board;
 import character.*;
 import components.Piece;
 import components.Square;
-
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -76,12 +76,14 @@ public class GameController {
 	 * @param y the y coordinate of the selection click
 	 */
 	public void selector(int x, int y){
-		model.hasSelection = true;
-		model.selectX = x;
-		model.selectY = y;
-		System.out.println("Selecting " + x + "," + y);
-		setMoves();
-		view.updateGraphics();
+		if(!(Board.boardArray[y][x].content instanceof Empty)){
+			model.hasSelection = true;
+			model.selectX = x;
+			model.selectY = y;
+			System.out.println("Selecting " + x + "," + y);
+			setMoves();
+			view.updateGraphics();
+		}
 	}
 	
 	/**
@@ -103,16 +105,12 @@ public class GameController {
 		
 		//Clear
 		
-		if (from.content.validMove(y, x)){
-			to.content = from.content;
-			from.content = new Empty(null);
-			System.out.println("Moving to " + x + ", " + y);
-		    model.hasSelection = false;
-		    to.content.hasNotMoved = false;
-		    view.updateGraphics();
-		} else {
-			System.out.println("Invalid move");
-		}
+		to.content = from.content;
+		from.content = new Empty(Color.GREEN);
+		System.out.println("Moving to " + x + ", " + y);
+	    model.hasSelection = false;
+	    to.content.hasNotMoved = false;
+	    view.updateGraphics();
 		clearMoves();
 	}
 	

@@ -11,12 +11,6 @@ public class King extends Piece{
 	}
 
 	@Override
-	public boolean validMove(int y, int x) {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
 	public String rep() {
 		return "♚";
 	}
@@ -26,36 +20,35 @@ public class King extends Piece{
 		System.out.println("Getting valid moves for King");
 		int i;
 		int j;
-		
 		//up
 		j = y - 1;
 		if(j >= 0){
-			moveArray[x][j] = true;
+			moveArray[x][j] = true && this.emptyOrOpponent(x, j);
 			//left
 			i = x - 1;
-			if(i >= 0) moveArray[i][j] = true;
+			if(i >= 0) moveArray[i][j] = true && this.emptyOrOpponent(i, j);
 			//right
 			i = x + 1;
-			if(i < 8 ) moveArray[i][j] = true;
+			if(i < 8 ) moveArray[i][j] = true && this.emptyOrOpponent(i, j);
 		}
 		
 		//down
 		j = y + 1;
 		if(j < 8){
-			moveArray[x][j] = true;
+			moveArray[x][j] = true && this.emptyOrOpponent(x, j);
 			//left
 			i = x - 1;
-			if(i >= 0) moveArray[i][j] = true;
+			if(i >= 0) moveArray[i][j] = true && this.emptyOrOpponent(i, j);
 			//right
 			i = x + 1;
-			if(i < 8 ) moveArray[i][j] = true;
+			if(i < 8 ) moveArray[i][j] = true && this.emptyOrOpponent(i, j);
 		}
 		//left
 		i = x - 1;
-		if(i >= 0) moveArray[i][y] = true;
+		if(i >= 0) moveArray[i][y] = true && this.emptyOrOpponent(i, y);
 		//right
 		i = x + 1;
-		if(i < 8) moveArray[i][y] = true;
+		if(i < 8) moveArray[i][y] = true && this.emptyOrOpponent(i, y);
 	}
 	
 }

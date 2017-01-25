@@ -11,13 +11,6 @@ public class Bishop extends Piece{
 		super(c);
 		// TODO Auto-generated constructor stub
 	}
-	
-	@Override
-	public boolean validMove(int y, int x) {
-		// TODO Auto-generated method stub
-		System.out.println("Valid move for Bishop");
-		return true;
-	}
 
 	@Override
 	public String rep() {
@@ -30,32 +23,40 @@ public class Bishop extends Piece{
 		//up left
 		int i = x - 1;
 		int j = y - 1 ;
+		boolean empty = true;
 		while( i >= 0 && j >= 0){
-			moveArray[i][j] = true;
+			moveArray[i][j] = true && this.emptyOrOpponent(i, j) && empty;
+			if(isEmpty(j,i)==false)	empty = false;
 			i--;
 			j--;
 		}
+		empty = true;
 		//up right
 		i = x + 1;
 		j = y - 1 ;
 		while( i < 8 && j >= 0){
-			moveArray[i][j] = true;
+			moveArray[i][j] = true && this.emptyOrOpponent(i, j) && empty;
+			if(isEmpty(j,i)==false)	empty = false;
 			i++;
 			j--;
 		}
+		empty = true;
 		//down left
 		i = x - 1;
 		j = y + 1 ;
 		while( i >= 0 && j < 8){
-			moveArray[i][j] = true;
+			moveArray[i][j] = true && this.emptyOrOpponent(i, j) && empty;
+			if(isEmpty(j,i)==false)	empty = false;
 			i--;
 			j++;
 		}
 		//up left
+		empty = true;
 		i = x + 1;
 		j = y + 1 ;
 		while( i < 8 && j < 8){
-			moveArray[i][j] = true;
+			moveArray[i][j] = true && this.emptyOrOpponent(i, j) && empty;
+			if(isEmpty(j,i)==false) empty = false;
 			i++;
 			j++;
 		}
